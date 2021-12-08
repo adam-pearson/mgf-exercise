@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Resources\ContactResource;
+use App\Http\Resources\CompanyResource;
 
 class contactController extends Controller
 {
@@ -40,9 +42,12 @@ class contactController extends Controller
      * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
-        return response(['contact' => new ContactResource($contact), 'message' => 'Retrieved successfully'], 200);
+        $contact = Contact::with('company')->where('id', $id)->get();
+        $companies = Company::all();
+
+        return response(['contact' => new ContactResource($contact), 'companies' => new CompanyResource($companies), 'message' => 'Retrieved successfully'], 200);
     }
 
     /**
