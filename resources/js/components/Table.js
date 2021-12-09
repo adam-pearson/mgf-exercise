@@ -12,6 +12,7 @@ const Table = () => {
     const [data, setData] = useState([]);
     const [currentSort, setCurrentSort] = useState();
     const [sortDirectionAsc, setSortDirectionAsc] = useState(false)
+    const [searchValue, setSearchValue] = useState("");
 
     useEffect(() => {
         pullData();
@@ -97,6 +98,10 @@ const Table = () => {
         setData([...data]);
     }, [currentSort, sortDirectionAsc])
 
+    const searchHandler = (e) => {
+        setSearchValue(e.target.value)
+    }
+
     const buttonStyle = {
         background: "none",
         border: "none",
@@ -107,8 +112,28 @@ const Table = () => {
         position: "relative"
     }
 
+    console.log(searchValue)
+    console.log("data: ", data)
+
+    useEffect(() => {
+        
+    }, [searchValue]);
+
     return (
         <div>
+
+        <form className="d-flex my-3">
+            <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={searchValue}
+                onChange={e => searchHandler(e)}
+            />
+            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+        </form>
+
             <table className="table table-hover">
                 <thead>
                     <tr>
@@ -167,7 +192,20 @@ const Table = () => {
                 </thead>
                 <tbody>
                     {
-                        data.length > 0 && data.map(row => {
+                        data.length > 0 &&
+                        data.filter((item, key)=> {
+                            if (searchValue === "") {
+                                return item;
+                            } else if (
+                                item.firstname.toLowerCase().includes(searchValue.toLowerCase()) ||
+                                item.lastname.toLowerCase().includes(searchValue.toLowerCase()) ||
+                                item.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+                                item.company.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                                item.company.postcode.toLowerCase().includes(searchValue.toLowerCase())
+                            ) {
+                                return item;
+                            }
+                        }).map(row => {
                             return(
                                 <tr key={row.id}>
                                     <th scope="row">{row.firstname} {row.lastname}</th>

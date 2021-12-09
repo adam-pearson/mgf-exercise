@@ -15468,6 +15468,11 @@ var Table = function Table() {
       sortDirectionAsc = _useState6[0],
       setSortDirectionAsc = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      searchValue = _useState8[0],
+      setSearchValue = _useState8[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     pullData();
   }, []);
@@ -15558,6 +15563,11 @@ var Table = function Table() {
     setData(data.sort(compare));
     setData(_toConsumableArray(data));
   }, [currentSort, sortDirectionAsc]);
+
+  var searchHandler = function searchHandler(e) {
+    setSearchValue(e.target.value);
+  };
+
   var buttonStyle = {
     background: "none",
     border: "none",
@@ -15567,8 +15577,23 @@ var Table = function Table() {
     outline: "inherit",
     position: "relative"
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
+  console.log(searchValue);
+  console.log("data: ", data);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, [searchValue]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+      className: "d-flex my-3",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        className: "form-control me-2",
+        type: "search",
+        placeholder: "Search",
+        "aria-label": "Search",
+        value: searchValue,
+        onChange: function onChange(e) {
+          return searchHandler(e);
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
       className: "table table-hover",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
@@ -15670,7 +15695,13 @@ var Table = function Table() {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-        children: data.length > 0 && data.map(function (row) {
+        children: data.length > 0 && data.filter(function (item, key) {
+          if (searchValue === "") {
+            return item;
+          } else if (item.firstname.toLowerCase().includes(searchValue.toLowerCase()) || item.lastname.toLowerCase().includes(searchValue.toLowerCase()) || item.email.toLowerCase().includes(searchValue.toLowerCase()) || item.company.name.toLowerCase().includes(searchValue.toLowerCase()) || item.company.postcode.toLowerCase().includes(searchValue.toLowerCase())) {
+            return item;
+          }
+        }).map(function (row) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("th", {
               scope: "row",
@@ -15714,7 +15745,7 @@ var Table = function Table() {
           }, row.id);
         })
       })]
-    })
+    })]
   });
 };
 
@@ -72185,7 +72216,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkmgf_exercise"] = self["webpackChunkmgf_exercise"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
