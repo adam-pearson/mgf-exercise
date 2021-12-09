@@ -15397,60 +15397,99 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Edit = function Edit(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+var Edit = function Edit() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       pulledData = _useState2[0],
       setPulledData = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
-      companiesList = _useState4[0],
-      setCompaniesList = _useState4[1];
+      updatedData = _useState4[0],
+      setUpdatedData = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState6 = _slicedToArray(_useState5, 2),
-      firstName = _useState6[0],
-      setFirstName = _useState6[1];
+      companiesList = _useState6[0],
+      setCompaniesList = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
-      lastName = _useState8[0],
-      setLastName = _useState8[1];
+      firstName = _useState8[0],
+      setFirstName = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      email = _useState10[0],
-      setEmail = _useState10[1];
+      lastName = _useState10[0],
+      setLastName = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState12 = _slicedToArray(_useState11, 2),
-      companyId = _useState12[0],
-      setCompanyId = _useState12[1];
+      email = _useState12[0],
+      setEmail = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState14 = _slicedToArray(_useState13, 2),
+      companyId = _useState14[0],
+      setCompanyId = _useState14[1];
 
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
       id = _useParams.id;
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/show/".concat(id)).then(function (res) {
-      setPulledData(res.data.contact[0]);
+      var contact = res.data.contact[0];
+      setPulledData(contact);
       setCompaniesList(res.data.companies);
-      setCompanyId(res.data.contact[0].company.id);
+      setFirstName(contact.firstname);
+      setLastName(contact.lastname);
+      setEmail(contact.email);
+      setCompanyId(contact.company.id);
     })["catch"](function (err) {
-      console.log("Error with API request");
+      console.log(err);
     });
+  }, []); // console.group("Individual")
+  // console.log("first: ", firstName)
+  // console.log("last: ", lastName)
+  // console.log("email: ", email)
+  // console.log("company id: ", companyId)
+  // console.groupEnd();
+
+  var handleFirstNameChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setFirstName(e.target.value);
   }, []);
-  companiesList && console.log(companyId);
+  var handleLastNameChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setLastName(e.target.value);
+  }, []);
+  var handleEmailChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setEmail(e.target.value);
+  }, []);
   var handleCompanyChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     setCompanyId(e.target.value);
   }, []);
+  console.log(pulledData);
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/update/".concat(id), {
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      company_id: companyId
+    }).then(function (res) {
+      console.log(res);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     style: {
       padding: 100
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
       children: "Update Data"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), pulledData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
       className: "container",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "mb-3",
@@ -15462,8 +15501,9 @@ var Edit = function Edit(props) {
           type: "text",
           className: "form-control mb-3",
           id: "first-name",
-          value: pulledData ? "".concat(pulledData.firstname) : "",
-          placeholder: "Enter First Name"
+          value: firstName,
+          placeholder: "Enter First Name",
+          onChange: handleFirstNameChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "last-name",
           className: "form-label",
@@ -15472,8 +15512,9 @@ var Edit = function Edit(props) {
           type: "text",
           className: "form-control mb-3",
           id: "last-name",
-          value: pulledData ? "".concat(pulledData.lastname) : "",
-          placeholder: "Enter Last Name"
+          value: lastName,
+          placeholder: "Enter Last Name",
+          onChange: handleLastNameChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "email",
           className: "form-label",
@@ -15482,14 +15523,15 @@ var Edit = function Edit(props) {
           type: "email",
           className: "form-control mb-3",
           id: "email",
-          value: pulledData ? pulledData.email : "",
-          placeholder: "Enter Email"
+          value: email,
+          placeholder: "Enter Email",
+          onChange: handleEmailChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "company",
           className: "form-label",
           children: "Company"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
-          className: "form-control",
+          className: "form-control mb-3",
           id: "company",
           value: companyId,
           onChange: handleCompanyChange,
@@ -15499,6 +15541,11 @@ var Edit = function Edit(props) {
               children: company.name
             }, company.id);
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary mb-3 col-3",
+          onClick: handleSubmit,
+          children: "Submit"
         })]
       })
     })]
@@ -15555,14 +15602,36 @@ var Table = function Table() {
       setData = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    pullData();
+  }, []);
+
+  var pullData = function pullData() {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get('api').then(function (res) {
-      console.log(res);
+      console.log("returned data: ", res.data.contacts);
       setData(res.data.contacts);
     })["catch"](function (err) {
       console.log(err);
     });
-  }, []);
-  data.length > 0 && console.log("returned data: ", data);
+  };
+
+  var handleDelete = function handleDelete(id) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().post("api/delete/".concat(id)).then(function (res) {
+      return console.log(res);
+    }).then(function (err) {
+      return console.log(err);
+    }).then(function () {
+      return handleListRemove(id);
+    });
+  };
+
+  var handleListRemove = function handleListRemove(id) {
+    var newList = data.filter(function (row) {
+      return row.id !== id;
+    });
+    setData(newList);
+  };
+
+  console.log("rerendered");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
       className: "table",
@@ -15602,12 +15671,26 @@ var Table = function Table() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                 to: "/edit/".concat(row.id),
                 className: "p-2",
+                style: {
+                  color: "#4a8fff"
+                },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
                   icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faPen
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-                to: "#",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                 className: "p-2",
+                onClick: function onClick() {
+                  return handleDelete(row.id);
+                },
+                style: {
+                  background: "none",
+                  color: "#4a8fff",
+                  border: "none",
+                  padding: 0,
+                  font: "inherit",
+                  cursor: "pointer",
+                  outline: "inherit"
+                },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
                   icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faTimes
                 })

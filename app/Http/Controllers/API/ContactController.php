@@ -57,11 +57,16 @@ class contactController extends Controller
      * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, contact $contact)
+    public function update(Request $request, $id)
     {
-        $contact->update($request->all());
 
-        return response(['contact' => new ContactResource($contact), 'message' => 'Update successfully'], 200);
+        $contactUpdate = Contact::findOrFail($id);
+
+        $input = $request->all();
+
+        $contactUpdate->fill($input)->save();
+
+        return response(['id' => $id, 'request' => $input, 'message' => 'Update successfully'], 200);
     }
 
     /**
@@ -70,9 +75,9 @@ class contactController extends Controller
      * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(contact $contact)
+    public function destroy($id)
     {
-        $contact->delete();
+        Contact::findOrFail($id)->delete();
 
         return response(['message' => 'Deleted']);
     }
