@@ -35,7 +35,7 @@ class contactController extends Controller
         $validated = $request->validate([
             'firstname' => 'required|max:255|string',
             'lastname' => 'required|max:255|string',
-            'email' => 'required|max:255|string',
+            'email' => 'required|max:255|email',
             'company_id'=> "required|between: 1, $lastCompanyId|integer"
         ]);
 
@@ -80,7 +80,7 @@ class contactController extends Controller
         $validated = $request->validate([
             'firstname' => 'required|max:255|string',
             'lastname' => 'required|max:255|string',
-            'email' => 'required|max:255|string',
+            'email' => 'required|max:255|email',
             'company_id'=> "required|between: 1, $lastCompanyId|integer"
         ]);
 
