@@ -90,7 +90,6 @@ const Table = () => {
     const sortHandler = (sortBy) => {
         setCurrentSort(sortBy);
         setSortDirectionAsc(!sortDirectionAsc);
-        console.log("sorted: ", data)
     }
 
     useEffect(() => {

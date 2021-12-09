@@ -15354,13 +15354,6 @@ var Navbar = function Navbar() {
               to: "/add",
               children: "Add New Contact"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-            className: "nav-item",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-              className: "nav-link",
-              to: "/report",
-              children: "Reports"
-            })
           })]
         })
       })]
@@ -15398,13 +15391,6 @@ var Navbar = function Navbar() {
               className: "nav-link",
               to: "/add",
               children: "Add New Contact"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-            className: "nav-item",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-              className: "nav-link",
-              to: "/report",
-              children: "Reports"
             })
           })]
         })
@@ -15506,14 +15492,12 @@ var Add = function Add() {
       email: email,
       company_id: companyId
     }).then(function (res) {
-      console.log(res);
       navigate("/");
     })["catch"](function (err) {
       console.log(err);
     });
   };
 
-  console.log(companyId);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "px-5 py-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {

@@ -48,15 +48,12 @@ const Add = () => {
             company_id: companyId
         })
             .then(res => {
-                console.log(res)
                 navigate("/");
             })
             .catch(err => {
             console.log(err)
             })
     };
-
-    console.log(companyId)
 
     return (
         <div className="px-5 py-5">

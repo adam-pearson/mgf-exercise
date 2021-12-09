@@ -15,7 +15,6 @@ function Index() {
                 <Route exact path="/" element={ <Home /> } />
                 <Route exact path="/edit/:id" element={ <Edit /> } />
                 <Route exact path="/add" element={ <Add /> } />
-                {/* <Route exact path="/report" element={ <Contact /> } /> */}
             </Routes>
         </div>
     );
