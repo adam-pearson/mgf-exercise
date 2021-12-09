@@ -112,9 +112,6 @@ const Table = () => {
         position: "relative"
     }
 
-    console.log(searchValue)
-    console.log("data: ", data)
-
     useEffect(() => {
         
     }, [searchValue]);

@@ -15577,8 +15577,6 @@ var Table = function Table() {
     outline: "inherit",
     position: "relative"
   };
-  console.log(searchValue);
-  console.log("data: ", data);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, [searchValue]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
