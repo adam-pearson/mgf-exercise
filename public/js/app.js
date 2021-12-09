@@ -15880,10 +15880,7 @@ var Add = function Add() {
           id: "first-name",
           value: firstName,
           placeholder: "Enter First Name",
-          onChange: handleFirstNameChange,
-          style: {
-            border: errorArray.includes("first-name") ? "1px solid red" : ""
-          }
+          onChange: handleFirstNameChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "last-name",
           className: "form-label",
@@ -15894,10 +15891,7 @@ var Add = function Add() {
           id: "last-name",
           value: lastName,
           placeholder: "Enter Last Name",
-          onChange: handleLastNameChange,
-          style: {
-            border: errorArray.includes("last-name") ? "1px solid red" : ""
-          }
+          onChange: handleLastNameChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "email",
           className: "form-label",
@@ -15908,10 +15902,7 @@ var Add = function Add() {
           id: "email",
           value: email,
           placeholder: "Enter Email",
-          onChange: handleEmailChange,
-          style: {
-            border: errorArray.includes("email") ? "1px solid red" : ""
-          }
+          onChange: handleEmailChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "company",
           className: "form-label",

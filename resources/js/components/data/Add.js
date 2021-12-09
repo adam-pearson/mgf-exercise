@@ -82,7 +82,6 @@ const Add = () => {
                         value={firstName}
                         placeholder="Enter First Name"
                         onChange={ handleFirstNameChange }
-                        style={{ border: errorArray.includes("first-name") ? "1px solid red" : ""}}
                     />
 
                     <label htmlFor="last-name" className="form-label">Last Name</label>
@@ -93,7 +92,6 @@ const Add = () => {
                         value={lastName}
                         placeholder="Enter Last Name"
                         onChange={ handleLastNameChange }
-                        style={{ border: errorArray.includes("last-name") ? "1px solid red" : ""}}
                     />
 
                     <label htmlFor="email" className="form-label">Email</label>
@@ -104,7 +102,6 @@ const Add = () => {
                         value={email}
                         placeholder="Enter Email"
                         onChange={ handleEmailChange }
-                        style={{ border: errorArray.includes("email") ? "1px solid red" : ""}}
                     />
 
                     <label htmlFor="company" className="form-label">Company</label>
