@@ -7,7 +7,7 @@ const Navbar = () => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link className="navbar-brand" to="/">MGF Exercise</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
@@ -25,6 +25,27 @@ const Navbar = () => {
                     </ul>
                 </div>
             </nav>
+
+            
+            <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+                    <div className="offcanvas-header">
+                        <h5 className="offcanvas-title" id="offcanvasWithBackdropLabel">Menu</h5>
+                        <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div className="offcanvas-body">
+                        <ul className="nav flex-column">
+                            <li className="nav-item active">
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/add">Add New Contact</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/report">Reports</Link>
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
         </div>
     )
 }

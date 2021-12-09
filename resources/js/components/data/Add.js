@@ -2,9 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom';
 
-const Edit = () => {
+const Add = () => {
 
-    const [pulledData, setPulledData] = useState({});
     const [companiesList, setCompaniesList] = useState();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -13,26 +12,15 @@ const Edit = () => {
 
     let navigate = useNavigate();
 
-    // pulls the ID from the URI
-    let { id } = useParams();
 
     useEffect(() => {
-        
-        axios.get(`/api/show/${id}`)
-        .then(res => {
-            let contact = res.data.contact[0];
-            setPulledData(contact);
-            setCompaniesList(res.data.companies);
-
-            setFirstName(contact.firstname)
-            setLastName(contact.lastname)
-            setEmail(contact.email)
-            setCompanyId(contact.company.id)
-            
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        axios.get(`/api/show/`)
+            .then(res => {
+                setCompaniesList(res.data.companies);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }, [])
 
     const handleFirstNameChange = useCallback(e => {
@@ -53,25 +41,27 @@ const Edit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`/api/update/${id}`, {
+        axios.put(`/api/add/`, {
             firstname: firstName,
             lastname: lastName,
             email: email,
             company_id: companyId
         })
             .then(res => {
-            navigate("/");
+                console.log(res)
+                navigate("/");
             })
             .catch(err => {
             console.log(err)
             })
     };
 
+    console.log(companyId)
+
     return (
         <div className="px-5 py-5">
-            <h1>Edit a Contact</h1>
+            <h1>Create a Contact</h1>
             <hr />
-            {pulledData &&
             <form className="container">
                 <div className="mb-3">
                     <label htmlFor="first-name" className="form-label">First Name</label>
@@ -124,10 +114,9 @@ const Edit = () => {
 
                 </div>
             </form>
-            }
 
         </div>
     )
 }
 
-export default Edit
+export default Add

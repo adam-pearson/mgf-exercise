@@ -4,6 +4,8 @@ import NavBar from './Navbar';
 
 import Home from './Home';
 import Edit from './data/Edit';
+import Add from './data/Add';
+
 
 function Index() {
     return (
@@ -12,8 +14,8 @@ function Index() {
             <Routes>
                 <Route exact path="/" element={ <Home /> } />
                 <Route exact path="/edit/:id" element={ <Edit /> } />
-                {/* <Route exact path="/add" element={ <About /> } />
-                <Route exact path="/report" element={ <Contact /> } /> */}
+                <Route exact path="/add" element={ <Add /> } />
+                {/* <Route exact path="/report" element={ <Contact /> } /> */}
             </Routes>
         </div>
     );

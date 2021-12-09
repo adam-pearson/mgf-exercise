@@ -21,6 +21,7 @@ use App\Models\Contact;
 // });
 
 Route::get('/', [ContactController::class, 'index']);
-Route::get('show/{id}', [ContactController::class, 'show']);
+Route::get('show/{id?}', [ContactController::class, 'show']);
 Route::post('update/{id}', [ContactController::class, 'update']);
+Route::put('add/', [ContactController::class, 'store']);
 Route::post('delete/{id}', [ContactController::class, 'destroy']);

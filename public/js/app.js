@@ -15254,11 +15254,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
 /* harmony import */ var _data_Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data/Edit */ "./resources/js/components/data/Edit.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _data_Add__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data/Add */ "./resources/js/components/data/Add.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -15268,17 +15270,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Index() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
         exact: true,
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Home__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Home__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
         exact: true,
         path: "/edit/:id",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_data_Edit__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_data_Edit__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/add",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_data_Add__WEBPACK_IMPORTED_MODULE_4__["default"], {})
       })]
     })]
   });
@@ -15302,31 +15308,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
 
 
 var Navbar = function Navbar() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
+  var _jsx2;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
       className: "navbar navbar-expand-lg navbar-light bg-light",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         className: "navbar-brand",
         to: "/",
         children: "MGF Exercise"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", (_jsx2 = {
         className: "navbar-toggler",
+        "data-bs-toggle": "offcanvas",
+        "data-bs-target": "#offcanvasWithBackdrop",
+        "aria-controls": "offcanvasWithBackdrop",
         type: "button",
         "data-toggle": "collapse",
-        "data-target": "#navbarSupportedContent",
-        "aria-controls": "navbarSupportedContent",
-        "aria-expanded": "false",
-        "aria-label": "Toggle navigation",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          className: "navbar-toggler-icon"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        "data-target": "#navbarSupportedContent"
+      }, _defineProperty(_jsx2, "aria-controls", "navbarSupportedContent"), _defineProperty(_jsx2, "aria-expanded", "false"), _defineProperty(_jsx2, "aria-label", "Toggle navigation"), _defineProperty(_jsx2, "children", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "navbar-toggler-icon"
+      })), _jsx2)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "collapse navbar-collapse",
         id: "navbarSupportedContent",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
@@ -15355,11 +15364,224 @@ var Navbar = function Navbar() {
           })]
         })
       })]
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "offcanvas offcanvas-start",
+      tabIndex: "-1",
+      id: "offcanvasWithBackdrop",
+      "aria-labelledby": "offcanvasWithBackdropLabel",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "offcanvas-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+          className: "offcanvas-title",
+          id: "offcanvasWithBackdropLabel",
+          children: "Menu"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          type: "button",
+          className: "btn-close text-reset",
+          "data-bs-dismiss": "offcanvas",
+          "aria-label": "Close"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "offcanvas-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+          className: "nav flex-column",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+            className: "nav-item active",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+              className: "nav-link",
+              to: "/",
+              children: "Home"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+            className: "nav-item",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+              className: "nav-link",
+              to: "/add",
+              children: "Add New Contact"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+            className: "nav-item",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+              className: "nav-link",
+              to: "/report",
+              children: "Reports"
+            })
+          })]
+        })
+      })]
+    })]
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navbar);
+
+/***/ }),
+
+/***/ "./resources/js/components/data/Add.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/data/Add.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var Add = function Add() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      companiesList = _useState2[0],
+      setCompaniesList = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      firstName = _useState4[0],
+      setFirstName = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      lastName = _useState6[0],
+      setLastName = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      email = _useState8[0],
+      setEmail = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+      _useState10 = _slicedToArray(_useState9, 2),
+      companyId = _useState10[0],
+      setCompanyId = _useState10[1];
+
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/show/").then(function (res) {
+      setCompaniesList(res.data.companies);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }, []);
+  var handleFirstNameChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setFirstName(e.target.value);
+  }, []);
+  var handleLastNameChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setLastName(e.target.value);
+  }, []);
+  var handleEmailChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setEmail(e.target.value);
+  }, []);
+  var handleCompanyChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    setCompanyId(e.target.value);
+  }, []);
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/add/", {
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      company_id: companyId
+    }).then(function (res) {
+      console.log(res);
+      navigate("/");
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  console.log(companyId);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "px-5 py-5",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+      children: "Create a Contact"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
+      className: "container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "mb-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "first-name",
+          className: "form-label",
+          children: "First Name"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "text",
+          className: "form-control mb-3",
+          id: "first-name",
+          value: firstName,
+          placeholder: "Enter First Name",
+          onChange: handleFirstNameChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "last-name",
+          className: "form-label",
+          children: "Last Name"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "text",
+          className: "form-control mb-3",
+          id: "last-name",
+          value: lastName,
+          placeholder: "Enter Last Name",
+          onChange: handleLastNameChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "email",
+          className: "form-label",
+          children: "Email"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "email",
+          className: "form-control mb-3",
+          id: "email",
+          value: email,
+          placeholder: "Enter Email",
+          onChange: handleEmailChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "company",
+          className: "form-label",
+          children: "Company"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+          className: "form-control mb-3",
+          id: "company",
+          value: companyId,
+          onChange: handleCompanyChange,
+          children: companiesList && companiesList.map(function (company) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+              value: company.id,
+              children: company.name
+            }, company.id);
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary mb-3 col-3",
+          onClick: handleSubmit,
+          children: "Submit"
+        })]
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Add);
 
 /***/ }),
 
@@ -15403,35 +15625,32 @@ var Edit = function Edit() {
       pulledData = _useState2[0],
       setPulledData = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState4 = _slicedToArray(_useState3, 2),
-      updatedData = _useState4[0],
-      setUpdatedData = _useState4[1];
+      companiesList = _useState4[0],
+      setCompaniesList = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      companiesList = _useState6[0],
-      setCompaniesList = _useState6[1];
+      firstName = _useState6[0],
+      setFirstName = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
-      firstName = _useState8[0],
-      setFirstName = _useState8[1];
+      lastName = _useState8[0],
+      setLastName = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      lastName = _useState10[0],
-      setLastName = _useState10[1];
+      email = _useState10[0],
+      setEmail = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState12 = _slicedToArray(_useState11, 2),
-      email = _useState12[0],
-      setEmail = _useState12[1];
+      companyId = _useState12[0],
+      setCompanyId = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState14 = _slicedToArray(_useState13, 2),
-      companyId = _useState14[0],
-      setCompanyId = _useState14[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); // pulls the ID from the URI
 
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
       id = _useParams.id;
@@ -15448,13 +15667,7 @@ var Edit = function Edit() {
     })["catch"](function (err) {
       console.log(err);
     });
-  }, []); // console.group("Individual")
-  // console.log("first: ", firstName)
-  // console.log("last: ", lastName)
-  // console.log("email: ", email)
-  // console.log("company id: ", companyId)
-  // console.groupEnd();
-
+  }, []);
   var handleFirstNameChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     setFirstName(e.target.value);
   }, []);
@@ -15467,7 +15680,6 @@ var Edit = function Edit() {
   var handleCompanyChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     setCompanyId(e.target.value);
   }, []);
-  console.log(pulledData);
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -15477,18 +15689,16 @@ var Edit = function Edit() {
       email: email,
       company_id: companyId
     }).then(function (res) {
-      console.log(res);
+      navigate("/");
     })["catch"](function (err) {
       console.log(err);
     });
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    style: {
-      padding: 100
-    },
+    className: "px-5 py-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-      children: "Update Data"
+      children: "Edit a Contact"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), pulledData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
       className: "container",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -15570,10 +15780,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -15595,11 +15813,23 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var Table = function Table() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       data = _useState2[0],
       setData = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState4 = _slicedToArray(_useState3, 2),
+      currentSort = _useState4[0],
+      setCurrentSort = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      sortDirectionAsc = _useState6[0],
+      setSortDirectionAsc = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     pullData();
@@ -15607,7 +15837,6 @@ var Table = function Table() {
 
   var pullData = function pullData() {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get('api').then(function (res) {
-      console.log("returned data: ", res.data.contacts);
       setData(res.data.contacts);
     })["catch"](function (err) {
       console.log(err);
@@ -15615,12 +15844,10 @@ var Table = function Table() {
   };
 
   var handleDelete = function handleDelete(id) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().post("api/delete/".concat(id)).then(function (res) {
-      return console.log(res);
-    }).then(function (err) {
-      return console.log(err);
-    }).then(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().post("api/delete/".concat(id)).then(function () {
       return handleListRemove(id);
+    })["catch"](function (err) {
+      return console.log(err);
     });
   };
 
@@ -15631,24 +15858,176 @@ var Table = function Table() {
     setData(newList);
   };
 
-  console.log("rerendered");
+  function compare(a, b) {
+    var stringA = "";
+    var stringB = "";
+
+    switch (currentSort) {
+      case "name":
+        stringA = a.firstname.toUpperCase() + " " + a.lastname.toUpperCase();
+        stringB = b.firstname.toUpperCase() + " " + b.lastname.toUpperCase();
+        break;
+
+      case "email":
+        stringA = a.email.toUpperCase();
+        stringB = b.email.toUpperCase();
+        break;
+
+      case "company_name":
+        stringA = a.company.name.toUpperCase();
+        stringB = b.company.name.toUpperCase();
+        break;
+
+      case "company_postcode":
+        stringA = a.company.postcode.toUpperCase();
+        stringB = b.company.postcode.toUpperCase();
+        break;
+
+      default:
+        stringA = a.id;
+        stringB = b.id;
+        break;
+    }
+
+    if (sortDirectionAsc) {
+      var comparison = 0;
+
+      if (stringA > stringB) {
+        comparison = 1;
+      } else if (stringA < stringB) {
+        comparison = -1;
+      }
+
+      return comparison;
+    } else if (!sortDirectionAsc) {
+      var _comparison = 0;
+
+      if (stringA < stringB) {
+        _comparison = 1;
+      } else if (stringA > stringB) {
+        _comparison = -1;
+      }
+
+      return _comparison;
+    }
+  }
+
+  var sortHandler = function sortHandler(sortBy) {
+    setCurrentSort(sortBy);
+    setSortDirectionAsc(!sortDirectionAsc);
+    console.log("sorted: ", data);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setData(data.sort(compare));
+    setData(_toConsumableArray(data));
+  }, [currentSort, sortDirectionAsc]);
+  var buttonStyle = {
+    background: "none",
+    border: "none",
+    paddingRight: "1rem",
+    font: "inherit",
+    cursor: "pointer",
+    outline: "inherit",
+    position: "relative"
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
-      className: "table",
+      className: "table table-hover",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
             scope: "col",
-            children: "Name"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+              style: buttonStyle,
+              onClick: function onClick(e) {
+                return sortHandler('name');
+              },
+              children: ["Name", currentSort === "name" ? sortDirectionAsc ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleDown,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleUp,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : ""]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
             scope: "col",
-            children: "Email"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+              style: buttonStyle,
+              onClick: function onClick(e) {
+                return sortHandler('email');
+              },
+              children: ["Email", currentSort === "email" ? sortDirectionAsc ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleDown,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleUp,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : ""]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
             scope: "col",
-            children: "Company Name"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+              style: buttonStyle,
+              onClick: function onClick(e) {
+                return sortHandler('company_name');
+              },
+              children: ["Company Name", currentSort === "company_name" ? sortDirectionAsc ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleDown,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleUp,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : ""]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
             scope: "col",
-            children: "Company Postcode"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+              style: buttonStyle,
+              onClick: function onClick(e) {
+                return sortHandler('company_postcode');
+              },
+              children: ["Company Postcode", currentSort === "company_postcode" ? sortDirectionAsc ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleDown,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+                icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faAngleUp,
+                style: {
+                  position: "absolute",
+                  right: 0,
+                  top: "17%"
+                }
+              }) : ""]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
             className: "text-center",
             children: "Action"
@@ -15668,17 +16047,17 @@ var Table = function Table() {
               children: row.company.postcode
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
               className: "text-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                 to: "/edit/".concat(row.id),
-                className: "p-2",
+                className: "px-2",
                 style: {
                   color: "#4a8fff"
                 },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
-                  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faPen
+                  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faPen
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                className: "p-2",
+                className: "px-2",
                 onClick: function onClick() {
                   return handleDelete(row.id);
                 },
@@ -15692,7 +16071,7 @@ var Table = function Table() {
                   outline: "inherit"
                 },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
-                  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faTimes
+                  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faTimes
                 })
               })]
             })]

@@ -30,8 +30,7 @@ class contactController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $contact = Contact::create($data);
+        $contact = Contact::create($request->all());
 
         return response(['contact' => new ContactResource($contact), 'message' => 'Created successfully'], 201);
     }
@@ -42,12 +41,18 @@ class contactController extends Controller
      * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id = false)
     {
-        $contact = Contact::with('company')->where('id', $id)->get();
-        $companies = Company::all();
 
-        return response(['contact' => new ContactResource($contact), 'companies' => new CompanyResource($companies), 'message' => 'Retrieved successfully'], 200);
+        if ($id) {
+            $contact = Contact::with('company')->where('id', $id)->get();
+            $companies = Company::all();
+            return response(['contact' => new ContactResource($contact), 'companies' => new CompanyResource($companies), 'message' => 'Retrieved successfully'], 200);
+        } else {
+            $companies = Company::all();
+            return response(['companies' => new CompanyResource($companies), 'message' => 'Retrieved successfully'], 200);
+        }
+        
     }
 
     /**
@@ -59,7 +64,6 @@ class contactController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $contactUpdate = Contact::findOrFail($id);
 
         $input = $request->all();
