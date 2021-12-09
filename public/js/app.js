@@ -15811,6 +15811,11 @@ var Add = function Add() {
       companyId = _useState10[0],
       setCompanyId = _useState10[1];
 
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      errorState = _useState12[0],
+      setErrorState = _useState12[1];
+
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/show/").then(function (res) {
@@ -15832,25 +15837,36 @@ var Add = function Add() {
     setCompanyId(e.target.value);
   }, []);
 
-  var handleSubmit = function handleSubmit(e) {
+  var handleFormSubmit = function handleFormSubmit(e) {
     e.preventDefault();
-    axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/add/", {
-      firstname: firstName,
-      lastname: lastName,
-      email: email,
-      company_id: companyId
-    }).then(function (res) {
-      navigate("/");
-    })["catch"](function (err) {
-      console.log(err);
-    });
+
+    if (firstName && lastName && email) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/add/", {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        company_id: companyId
+      }).then(function (res) {
+        navigate("/");
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    } else {
+      setErrorState(true);
+    }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "px-5 py-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
       children: "Create a Contact"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), errorState && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "alert alert-warning fade show",
+      role: "alert",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+        children: "Error: "
+      }), "Please ensure that all fields are filled out"]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
       className: "container",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "mb-3",
@@ -15864,7 +15880,10 @@ var Add = function Add() {
           id: "first-name",
           value: firstName,
           placeholder: "Enter First Name",
-          onChange: handleFirstNameChange
+          onChange: handleFirstNameChange,
+          style: {
+            border: errorArray.includes("first-name") ? "1px solid red" : ""
+          }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "last-name",
           className: "form-label",
@@ -15875,7 +15894,10 @@ var Add = function Add() {
           id: "last-name",
           value: lastName,
           placeholder: "Enter Last Name",
-          onChange: handleLastNameChange
+          onChange: handleLastNameChange,
+          style: {
+            border: errorArray.includes("last-name") ? "1px solid red" : ""
+          }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "email",
           className: "form-label",
@@ -15886,7 +15908,10 @@ var Add = function Add() {
           id: "email",
           value: email,
           placeholder: "Enter Email",
-          onChange: handleEmailChange
+          onChange: handleEmailChange,
+          style: {
+            border: errorArray.includes("email") ? "1px solid red" : ""
+          }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
           htmlFor: "company",
           className: "form-label",
@@ -15905,7 +15930,7 @@ var Add = function Add() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           type: "submit",
           className: "btn btn-primary mb-3 col-3",
-          onClick: handleSubmit,
+          onClick: handleFormSubmit,
           children: "Submit"
         })]
       })
@@ -15982,6 +16007,11 @@ var Edit = function Edit() {
       companyId = _useState12[0],
       setCompanyId = _useState12[1];
 
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState14 = _slicedToArray(_useState13, 2),
+      errorState = _useState14[0],
+      setErrorState = _useState14[1];
+
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)(); // pulls the ID from the URI
 
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
@@ -16013,25 +16043,37 @@ var Edit = function Edit() {
     setCompanyId(e.target.value);
   }, []);
 
-  var handleSubmit = function handleSubmit(e) {
+  var handleFormSubmit = function handleFormSubmit(e) {
     e.preventDefault();
-    axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/update/".concat(id), {
-      firstname: firstName,
-      lastname: lastName,
-      email: email,
-      company_id: companyId
-    }).then(function (res) {
-      navigate("/");
-    })["catch"](function (err) {
-      console.log(err);
-    });
+
+    if (firstName && lastName && email) {
+      setErrorState(false);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/update/".concat(id), {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        company_id: companyId
+      }).then(function (res) {
+        navigate("/");
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    } else {
+      setErrorState(true);
+    }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "px-5 py-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
       children: "Edit a Contact"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), pulledData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), errorState && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "alert alert-warning fade show",
+      role: "alert",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+        children: "Error: "
+      }), "Please ensure that all fields are filled out"]
+    }), pulledData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
       className: "container",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "mb-3",
@@ -16086,7 +16128,7 @@ var Edit = function Edit() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           type: "submit",
           className: "btn btn-primary mb-3 col-3",
-          onClick: handleSubmit,
+          onClick: handleFormSubmit,
           children: "Submit"
         })]
       })

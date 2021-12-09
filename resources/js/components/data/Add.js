@@ -9,6 +9,8 @@ const Add = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [companyId, setCompanyId] = useState(1);
+    const [errorState, setErrorState] = useState(false);
+
 
     let navigate = useNavigate();
 
@@ -39,26 +41,37 @@ const Add = () => {
         setCompanyId(e.target.value)
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
-        axios.put(`/api/add/`, {
-            firstname: firstName,
-            lastname: lastName,
-            email: email,
-            company_id: companyId
-        })
-            .then(res => {
-                navigate("/");
+        if (firstName && lastName && email) {
+            axios.put(`/api/add/`, {
+                firstname: firstName,
+                lastname: lastName,
+                email: email,
+                company_id: companyId
             })
-            .catch(err => {
-            console.log(err)
-            })
+                .then(res => {
+                    navigate("/");
+                })
+                .catch(err => {
+                console.log(err)
+                })
+        } else {
+            setErrorState(true);
+        }
     };
 
     return (
         <div className="px-5 py-5">
             <h1>Create a Contact</h1>
             <hr />
+
+            {errorState &&
+                <div className="alert alert-warning fade show" role="alert">
+                <strong>Error: </strong>Please ensure that all fields are filled out
+              </div>
+            }
+
             <form className="container">
                 <div className="mb-3">
                     <label htmlFor="first-name" className="form-label">First Name</label>
@@ -69,6 +82,7 @@ const Add = () => {
                         value={firstName}
                         placeholder="Enter First Name"
                         onChange={ handleFirstNameChange }
+                        style={{ border: errorArray.includes("first-name") ? "1px solid red" : ""}}
                     />
 
                     <label htmlFor="last-name" className="form-label">Last Name</label>
@@ -79,6 +93,7 @@ const Add = () => {
                         value={lastName}
                         placeholder="Enter Last Name"
                         onChange={ handleLastNameChange }
+                        style={{ border: errorArray.includes("last-name") ? "1px solid red" : ""}}
                     />
 
                     <label htmlFor="email" className="form-label">Email</label>
@@ -89,6 +104,7 @@ const Add = () => {
                         value={email}
                         placeholder="Enter Email"
                         onChange={ handleEmailChange }
+                        style={{ border: errorArray.includes("email") ? "1px solid red" : ""}}
                     />
 
                     <label htmlFor="company" className="form-label">Company</label>
@@ -106,7 +122,7 @@ const Add = () => {
                         
                     </select>
 
-                    <button type="submit" className="btn btn-primary mb-3 col-3" onClick={handleSubmit}>Submit</button>
+                    <button type="submit" className="btn btn-primary mb-3 col-3" onClick={handleFormSubmit}>Submit</button>
 
 
                 </div>

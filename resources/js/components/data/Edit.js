@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom';
 
@@ -10,8 +10,11 @@ const Edit = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [companyId, setCompanyId] = useState(1);
+    const [errorState, setErrorState] = useState(false);
 
     let navigate = useNavigate();
+
+
 
     // pulls the ID from the URI
     let { id } = useParams();
@@ -51,26 +54,37 @@ const Edit = () => {
         setCompanyId(e.target.value)
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
-        axios.post(`/api/update/${id}`, {
-            firstname: firstName,
-            lastname: lastName,
-            email: email,
-            company_id: companyId
-        })
-            .then(res => {
-            navigate("/");
+        if (firstName && lastName && email) {
+            setErrorState(false);
+            axios.post(`/api/update/${id}`, {
+                firstname: firstName,
+                lastname: lastName,
+                email: email,
+                company_id: companyId
             })
-            .catch(err => {
-            console.log(err)
-            })
+                .then(res => {
+                navigate("/");
+                })
+                .catch(err => {
+                console.log(err)
+                })
+        } else {
+            setErrorState(true);
+        }
     };
 
     return (
         <div className="px-5 py-5">
             <h1>Edit a Contact</h1>
             <hr />
+            {errorState &&
+                <div className="alert alert-warning fade show" role="alert">
+                <strong>Error: </strong>Please ensure that all fields are filled out
+              </div>
+            }
+
             {pulledData &&
             <form className="container">
                 <div className="mb-3">
@@ -119,8 +133,7 @@ const Edit = () => {
                         
                     </select>
 
-                    <button type="submit" className="btn btn-primary mb-3 col-3" onClick={handleSubmit}>Submit</button>
-
+                    <button type="submit" className="btn btn-primary mb-3 col-3" onClick={handleFormSubmit}>Submit</button>
 
                 </div>
             </form>
