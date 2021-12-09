@@ -30,9 +30,20 @@ class contactController extends Controller
      */
     public function store(Request $request)
     {
-        $contact = Contact::create($request->all());
+        $lastCompanyId = Company::all()->sortByDesc('id')->first()->id;
 
-        return response(['contact' => new ContactResource($contact), 'message' => 'Created successfully'], 201);
+        $validated = $request->validate([
+            'firstname' => 'required|max:255|string',
+            'lastname' => 'required|max:255|string',
+            'email' => 'required|max:255|string',
+            'company_id'=> "required|between: 1, $lastCompanyId|integer"
+        ]);
+
+        if ($validated) {
+            $contact = Contact::create($request->all());
+            return response(['contact' => new ContactResource($contact), 'message' => 'Created successfully'], 201);
+        }
+        
     }
 
     /**
@@ -64,13 +75,21 @@ class contactController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $lastCompanyId = Company::all()->sortByDesc('id')->first()->id;
+
+        $validated = $request->validate([
+            'firstname' => 'required|max:255|string',
+            'lastname' => 'required|max:255|string',
+            'email' => 'required|max:255|string',
+            'company_id'=> "required|between: 1, $lastCompanyId|integer"
+        ]);
+
         $contactUpdate = Contact::findOrFail($id);
-
         $input = $request->all();
-
         $contactUpdate->fill($input)->save();
 
         return response(['id' => $id, 'request' => $input, 'message' => 'Update successfully'], 200);
+
     }
 
     /**
