@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel React Crud</title>
-        <link rel="stylesheet" href={{ asset("./css/app.css") }}>
+        <link rel="stylesheet" href="./css/app.css">
 
     </head>
     <body>
         <div id="app"></div>
-        <script src={{ asset("./js/app.js") }}></script>
+        <script src="./js/app.js")></script>
     </body>
 </html>
