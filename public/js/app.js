@@ -15510,8 +15510,8 @@ var Table = function Table() {
 
     switch (currentSort) {
       case "name":
-        stringA = a.firstname.toUpperCase() + " " + a.lastname.toUpperCase();
-        stringB = b.firstname.toUpperCase() + " " + b.lastname.toUpperCase();
+        stringA = "".concat(a.firstname.toUpperCase(), " ").concat(a.lastname.toUpperCase());
+        stringB = "".concat(b.firstname.toUpperCase(), " ").concat(b.lastname.toUpperCase());
         break;
 
       case "email":
@@ -15704,7 +15704,7 @@ var Table = function Table() {
           children: data.length > 0 && data.filter(function (item, key) {
             if (searchValue === "") {
               return item;
-            } else if (item.firstname.toLowerCase().includes(searchValue.toLowerCase()) || item.lastname.toLowerCase().includes(searchValue.toLowerCase()) || item.email.toLowerCase().includes(searchValue.toLowerCase()) || item.company.name.toLowerCase().includes(searchValue.toLowerCase()) || item.company.postcode.toLowerCase().includes(searchValue.toLowerCase())) {
+            } else if (item.firstname.toLowerCase().includes(searchValue.toLowerCase()) || item.lastname.toLowerCase().includes(searchValue.toLowerCase()) || (item.firstname.toLowerCase() + " " + item.lastname.toLowerCase()).includes(searchValue.toLowerCase()) || item.email.toLowerCase().includes(searchValue.toLowerCase()) || item.company.name.toLowerCase().includes(searchValue.toLowerCase()) || item.company.postcode.toLowerCase().includes(searchValue.toLowerCase())) {
               return item;
             }
           }).map(function (row) {

@@ -52,8 +52,8 @@ const Table = () => {
 
         switch (currentSort) {
             case "name":
-                stringA = a.firstname.toUpperCase() + " " + a.lastname.toUpperCase();
-                stringB = b.firstname.toUpperCase() + " " + b.lastname.toUpperCase();
+                stringA = `${a.firstname.toUpperCase()} ${a.lastname.toUpperCase()}`;
+                stringB = `${b.firstname.toUpperCase()} ${b.lastname.toUpperCase()}`;
                 break;
             case "email":
                 stringA = a.email.toUpperCase();
@@ -202,6 +202,7 @@ const Table = () => {
                             } else if (
                                 item.firstname.toLowerCase().includes(searchValue.toLowerCase()) ||
                                 item.lastname.toLowerCase().includes(searchValue.toLowerCase()) ||
+                                (item.firstname.toLowerCase() + " " + item.lastname.toLowerCase()).includes(searchValue.toLowerCase()) ||
                                 item.email.toLowerCase().includes(searchValue.toLowerCase()) ||
                                 item.company.name.toLowerCase().includes(searchValue.toLowerCase()) ||
                                 item.company.postcode.toLowerCase().includes(searchValue.toLowerCase())
