@@ -62,7 +62,7 @@ const Add = () => {
     };
 
     return (
-        <div className="px-5 py-5">
+        <div className="py-5">
             <h1>Create a Contact</h1>
             <hr />
 

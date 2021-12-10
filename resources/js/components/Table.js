@@ -6,6 +6,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 
 const Table = () => {
 
@@ -22,6 +24,9 @@ const Table = () => {
         axios.get('api')
         .then(res => {
             setData(res.data.contacts);
+        })
+        .then(res => {
+            sortHandler("name");
         })
         .catch(err => {
             console.log(err)
@@ -94,8 +99,10 @@ const Table = () => {
     }
 
     useEffect(() => {
-        setData(data.sort(compare))
-        setData([...data]);
+        if (data.length > 0) {
+            setData(data.sort(compare))
+            setData([...data]);
+        }
     }, [currentSort, sortDirectionAsc])
 
     const searchHandler = (e) => {
@@ -128,9 +135,8 @@ const Table = () => {
                 value={searchValue}
                 onChange={e => searchHandler(e)}
             />
-            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
         </form>
-
+        <ScrollContainer className="scroll-container table-responsive">
             <table className="table table-hover">
                 <thead>
                     <tr>
@@ -215,7 +221,7 @@ const Table = () => {
                                         </Link>
                                         <button
                                             className="px-2"
-                                            onClick={ () => handleDelete(row.id) }
+                                            onClick={() => handleDelete(row.id)}
                                             style={{
                                                 background: "none",
                                                 color: "#4a8fff",
@@ -236,6 +242,7 @@ const Table = () => {
 
                 </tbody>
             </table>
+            </ScrollContainer>
         </div>
     )
 }

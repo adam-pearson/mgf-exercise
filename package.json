@@ -29,6 +29,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
         "@fortawesome/react-fontawesome": "^0.1.16",
+        "react-indiana-drag-scroll": "^2.1.0",
         "react-router-dom": "^6.0.2",
         "react-select": "^5.2.1"
     },

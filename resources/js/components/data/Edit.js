@@ -76,7 +76,7 @@ const Edit = () => {
     };
 
     return (
-        <div className="px-5 py-5">
+        <div className=" py-5">
             <h1>Edit a Contact</h1>
             <hr />
             {errorState &&
