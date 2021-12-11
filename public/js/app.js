@@ -15827,7 +15827,7 @@ var Add = function Add() {
 
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/show/").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/show").then(function (res) {
       setCompaniesList(res.data.companies);
     })["catch"](function (err) {
       console.log(err);
@@ -66077,11 +66077,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "useNavigate": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useNavigate),
 /* harmony export */   "useNavigationType": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useNavigationType),
 /* harmony export */   "useOutlet": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useOutlet),
+/* harmony export */   "useOutletContext": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useOutletContext),
 /* harmony export */   "useParams": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useParams),
 /* harmony export */   "useResolvedPath": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useResolvedPath),
 /* harmony export */   "useRoutes": () => (/* reexport safe */ react_router__WEBPACK_IMPORTED_MODULE_1__.useRoutes),
 /* harmony export */   "BrowserRouter": () => (/* binding */ BrowserRouter),
 /* harmony export */   "HashRouter": () => (/* binding */ HashRouter),
+/* harmony export */   "HistoryRouter": () => (/* binding */ HistoryRouter),
 /* harmony export */   "Link": () => (/* binding */ Link),
 /* harmony export */   "NavLink": () => (/* binding */ NavLink),
 /* harmony export */   "createSearchParams": () => (/* binding */ createSearchParams),
@@ -66092,7 +66094,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! history */ "./node_modules/history/index.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
 /**
- * React Router DOM v6.0.2
+ * React Router DOM v6.1.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -66140,7 +66142,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 const _excluded = ["onClick", "reloadDocument", "replace", "state", "target", "to"],
-      _excluded2 = ["aria-current", "caseSensitive", "className", "end", "style", "to"];
+      _excluded2 = ["aria-current", "caseSensitive", "className", "end", "style", "to", "children"];
 
 function warning(cond, message) {
   if (!cond) {
@@ -66224,6 +66226,29 @@ function HashRouter(_ref2) {
     navigator: history
   });
 }
+function HistoryRouter(_ref3) {
+  let {
+    basename,
+    children,
+    history
+  } = _ref3;
+  const [state, setState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    action: history.action,
+    location: history.location
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(() => history.listen(setState), [history]);
+  return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router__WEBPACK_IMPORTED_MODULE_1__.Router, {
+    basename: basename,
+    children: children,
+    location: state.location,
+    navigationType: state.action,
+    navigator: history
+  });
+}
+
+if (true) {
+  HistoryRouter.displayName = "HistoryRouter";
+}
 
 function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
@@ -66232,7 +66257,7 @@ function isModifiedEvent(event) {
 /**
  * The public API for rendering a history-aware <a>.
  */
-const Link = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function LinkWithRef(_ref3, ref) {
+const Link = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function LinkWithRef(_ref4, ref) {
   let {
     onClick,
     reloadDocument,
@@ -66240,8 +66265,8 @@ const Link = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(func
     state,
     target,
     to
-  } = _ref3,
-      rest = _objectWithoutPropertiesLoose(_ref3, _excluded);
+  } = _ref4,
+      rest = _objectWithoutPropertiesLoose(_ref4, _excluded);
 
   let href = (0,react_router__WEBPACK_IMPORTED_MODULE_1__.useHref)(to);
   let internalOnClick = useLinkClickHandler(to, {
@@ -66277,16 +66302,17 @@ if (true) {
 /**
  * A <Link> wrapper that knows if it's "active" or not.
  */
-const NavLink = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function NavLinkWithRef(_ref4, ref) {
+const NavLink = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function NavLinkWithRef(_ref5, ref) {
   let {
     "aria-current": ariaCurrentProp = "page",
     caseSensitive = false,
     className: classNameProp = "",
     end = false,
     style: styleProp,
-    to
-  } = _ref4,
-      rest = _objectWithoutPropertiesLoose(_ref4, _excluded2);
+    to,
+    children
+  } = _ref5,
+      rest = _objectWithoutPropertiesLoose(_ref5, _excluded2);
 
   let location = (0,react_router__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
   let path = (0,react_router__WEBPACK_IMPORTED_MODULE_1__.useResolvedPath)(to);
@@ -66324,7 +66350,9 @@ const NavLink = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(f
     ref: ref,
     style: style,
     to: to
-  }));
+  }), typeof children === "function" ? children({
+    isActive
+  }) : children);
 });
 
 if (true) {
@@ -66463,6 +66491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "useNavigate": () => (/* binding */ useNavigate),
 /* harmony export */   "useNavigationType": () => (/* binding */ useNavigationType),
 /* harmony export */   "useOutlet": () => (/* binding */ useOutlet),
+/* harmony export */   "useOutletContext": () => (/* binding */ useOutletContext),
 /* harmony export */   "useParams": () => (/* binding */ useParams),
 /* harmony export */   "useResolvedPath": () => (/* binding */ useResolvedPath),
 /* harmony export */   "useRoutes": () => (/* binding */ useRoutes)
@@ -66470,7 +66499,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! history */ "./node_modules/history/index.js");
 /**
- * React Router v6.0.2
+ * React Router v6.1.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -66618,8 +66647,8 @@ function Navigate(_ref2) {
  *
  * @see https://reactrouter.com/docs/en/v6/api#outlet
  */
-function Outlet(_props) {
-  return useOutlet();
+function Outlet(props) {
+  return useOutlet(props.context);
 }
 
 /**
@@ -66776,13 +66805,13 @@ function useLocation() {
   "useLocation() may be used only in the context of a <Router> component.") : 0 : void 0;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(LocationContext).location;
 }
+
 /**
  * Returns the current navigation action which describes how the router came to
  * the current location, either by a pop, push, or replace on the history stack.
  *
  * @see https://reactrouter.com/docs/en/v6/api#usenavigationtype
  */
-
 function useNavigationType() {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(LocationContext).navigationType;
 }
@@ -66798,7 +66827,10 @@ function useMatch(pattern) {
   !useInRouterContext() ?  true ? invariant(false, // TODO: This error is probably because they somehow have 2 versions of the
   // router loaded. We can help them understand how to avoid that.
   "useMatch() may be used only in the context of a <Router> component.") : 0 : void 0;
-  return matchPath(pattern, useLocation().pathname);
+  let {
+    pathname
+  } = useLocation();
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => matchPath(pattern, pathname), [pathname, pattern]);
 }
 /**
  * The interface for the navigate() function returned from useNavigate().
@@ -66852,6 +66884,16 @@ function useNavigate() {
   }, [basename, navigator, routePathnamesJson, locationPathname]);
   return navigate;
 }
+const OutletContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);
+/**
+ * Returns the context (if provided) for the child route at this level of the route
+ * hierarchy.
+ * @see https://reactrouter.com/docs/en/v6/api#useoutletcontext
+ */
+
+function useOutletContext() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(OutletContext);
+}
 /**
  * Returns the element for the child route at this level of the route
  * hierarchy. Used internally by <Outlet> to render child routes.
@@ -66859,8 +66901,11 @@ function useNavigate() {
  * @see https://reactrouter.com/docs/en/v6/api#useoutlet
  */
 
-function useOutlet() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(RouteContext).outlet;
+function useOutlet(context) {
+  let outlet = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(RouteContext).outlet;
+  return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(OutletContext.Provider, {
+    value: context
+  }, outlet);
 }
 /**
  * Returns an object of key/value pairs of the dynamic params from the current
@@ -66936,7 +66981,7 @@ function useRoutes(routes, locationArg) {
     //   );
     // }
     let parentPath = parentRoute && parentRoute.path || "";
-    warningOnce(parentPathname, !parentRoute || parentPath.endsWith("*"), "You rendered descendant <Routes> (or called `useRoutes()`) at " + ("\"" + parentPathname + "\" (under <Route path=\"" + parentPath + "\">) but the ") + "parent route path has no trailing \"*\". This means if you navigate " + "deeper, the parent won't match anymore and therefore the child " + "routes will never render.\n\n" + ("Please change the parent <Route path=\"" + parentPath + "\"> to <Route ") + ("path=\"" + parentPath + "/*\">."));
+    warningOnce(parentPathname, !parentRoute || parentPath.endsWith("*"), "You rendered descendant <Routes> (or called `useRoutes()`) at " + ("\"" + parentPathname + "\" (under <Route path=\"" + parentPath + "\">) but the ") + "parent route path has no trailing \"*\". This means if you navigate " + "deeper, the parent won't match anymore and therefore the child " + "routes will never render.\n\n" + ("Please change the parent <Route path=\"" + parentPath + "\"> to <Route ") + ("path=\"" + (parentPath === "/" ? "*" : parentPath + "/*") + "\">."));
   }
 
   let locationFromContext = useLocation();
@@ -67056,7 +67101,7 @@ function matchRoutes(routes, locationArg, basename) {
   let matches = null;
 
   for (let i = 0; matches == null && i < branches.length; ++i) {
-    matches = matchRouteBranch(branches[i], routes, pathname);
+    matches = matchRouteBranch(branches[i], pathname);
   }
 
   return matches;
@@ -67079,7 +67124,8 @@ function flattenRoutes(routes, branches, parentsMeta, parentPath) {
     let meta = {
       relativePath: route.path || "",
       caseSensitive: route.caseSensitive === true,
-      childrenIndex: index
+      childrenIndex: index,
+      route
     };
 
     if (meta.relativePath.startsWith("/")) {
@@ -67152,9 +67198,7 @@ function compareIndexes(a, b) {
   0;
 }
 
-function matchRouteBranch(branch, // TODO: attach original route object inside routesMeta so we don't need this arg
-routesArg, pathname) {
-  let routes = routesArg;
+function matchRouteBranch(branch, pathname) {
   let {
     routesMeta
   } = branch;
@@ -67173,7 +67217,7 @@ routesArg, pathname) {
     }, remainingPathname);
     if (!match) return null;
     Object.assign(matchedParams, match.params);
-    let route = routes[meta.childrenIndex];
+    let route = meta.route;
     matches.push({
       params: matchedParams,
       pathname: joinPaths([matchedPathname, match.pathname]),
@@ -67184,8 +67228,6 @@ routesArg, pathname) {
     if (match.pathnameBase !== "/") {
       matchedPathname = joinPaths([matchedPathname, match.pathnameBase]);
     }
-
-    routes = route.children;
   }
 
   return matches;
@@ -67285,10 +67327,10 @@ function compilePath(path, caseSensitive, end) {
     : "(?:\\/(.+)|\\/*)$"; // Don't include the / in params["*"]
   } else {
     regexpSource += end ? "\\/*$" // When matching to the end, ignore trailing slashes
-    : // Otherwise, at least match a word boundary. This restricts parent
-    // routes to matching only their own words and nothing more, e.g. parent
+    : // Otherwise, match a word boundary or a proceeding /. The word boundary restricts
+    // parent routes to matching only their own words and nothing more, e.g. parent
     // route "/home" should not match "/home2".
-    "(?:\\b|$)";
+    "(?:\\b|\\/|$)";
   }
 
   let matcher = new RegExp(regexpSource, caseSensitive ? undefined : "i");

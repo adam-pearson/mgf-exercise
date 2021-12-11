@@ -16,7 +16,7 @@ const Add = () => {
 
 
     useEffect(() => {
-        axios.get(`/api/show/`)
+        axios.get(`/api/show`)
             .then(res => {
                 setCompaniesList(res.data.companies);
             })
