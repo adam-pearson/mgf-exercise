@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\ContactResource;
 use App\Http\Resources\CompanyResource;
 
-class contactController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
