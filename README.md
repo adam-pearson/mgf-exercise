@@ -16,7 +16,7 @@ For this exercise, I completed the following:
 ## Setup Instructions
 
  1. Clone the repo
- 2. Set up a database and import the .sql dump (I modified the SQL file to add a comma and turn the table IDs into auto-incrementing primary keys)
+ 2. Set up a database and import the .sql dump (the original SQL file has been modified to add a comma and turn the table IDs into auto-incrementing primary keys)
  3. Run ```composer install``` and ```npm install```
  4. Create a .env file using .env.example, making sure to set DB credentials
  5. Generate an app key with ```php artisan key:generate```
